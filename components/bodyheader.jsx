@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 export const BodyHeader = () => {
-    return (
-        <>
-        <h2>Trending Articles</h2>
-        </>
-    )
-}
+  const [header, setHeader] = useState([]);
+
+  return (
+    <>
+      <h2>Trending Articles</h2>
+    </>
+  );
+};

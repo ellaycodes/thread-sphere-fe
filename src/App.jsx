@@ -1,16 +1,18 @@
-import { useState } from "react";
 import "./App.css";
 import { Header } from "../components/header";
 import { Body } from "../components/body";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ArticleBody } from "../components/ArticleBody";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <Body />
-    </>
+      <Routes>
+        <Route path="/" element={<Body />} />
+        <Route path="/article/:article_id" element={<ArticleBody />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
