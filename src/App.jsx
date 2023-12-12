@@ -1,13 +1,17 @@
 import "./App.css";
 import { Header } from "../components/header";
-import { Body } from "../components/body";
-import { BrowserRouter } from "react-router-dom";
+import { AllArticles } from "../components/AllArticles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SingleArticle } from "../components/SingleArticle";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Body />
+      <Routes>
+        <Route path="/" element={<AllArticles />} />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -1,7 +1,8 @@
-export const BodyHeader = () => {
-    return (
-        <>
-        <h2>Trending Articles</h2>
-        </>
-    )
-}
+export const BodyHeader = ({title}) => {
+
+  return (
+    <>
+      <h2>{title}</h2>
+    </>
+  );
+};
