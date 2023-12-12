@@ -26,7 +26,7 @@ export const ArticleList = () => {
   return (
     <>
       {articles.map((article) => {
-        return <ArticleCard article={article} key={article.article_id} className="article_card"/>;
+        return <ArticleCard article={article} key={article.article_id} />;
       })}
     </>
   );

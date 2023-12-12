@@ -1,10 +1,26 @@
 #root {
   text-align: center;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
 }
 
 .article_img {
   width: 30vw;
   border-radius: 10px;
+}
+
+.hero_img {
+  width: 100%;
+}
+
+.article_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .article_card {
@@ -19,13 +35,46 @@
   column-gap: 2%;
 }
 
-.article_info {
-  margin: 1%;
-  width: 100%;
+.article_content {
+  text-align: left;
+  width: 90%;
 }
 
 .article_stats {
   display: flex;
   gap: 5%;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment_card {
+  border-bottom: 1px solid black;
+  margin: 4vh 2vw;
+}
+
+.comment_header {
+  margin: 2vh 2vw;
+  border-bottom: 1px solid red;
+  padding: 1vw 0 3vh 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_stats {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  align-items: center;
+  padding: 0 0 2vh 0;
+  border-bottom: 1px solid lightgrey;
+  width: 35%;
+}
+
+.comment_body {
+  text-align: left;
+}
+
+button {
+  height: 5vh;
 }

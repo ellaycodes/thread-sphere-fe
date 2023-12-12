@@ -5,7 +5,8 @@ export const Header = () => {
         <>
         <h1>Thread Sphere</h1>
         <nav>
-            <Link to={'/'}>Topics</Link>
+            <Link to={'/'}>Home</Link>
+            <a href="">Topics</a>
             <a href="">Profile</a>
         </nav>
         </>

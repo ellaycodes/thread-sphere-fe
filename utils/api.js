@@ -22,3 +22,9 @@ export const getArticleById = (id) => {
     return data.article;
   });
 };
+
+export const getCommentsByArticleId = (id) => {
+  return instance.get(`/articles/${id}/comments`).then(({ data }) => {
+      return data.comments;
+    });
+};
