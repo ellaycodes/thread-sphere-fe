@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BodyHeader } from "./BodyHeader";
-import { getArticleById } from "../utils/api";
+import { getArticleById } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 export const SingleArticle = () => {
