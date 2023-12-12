@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { BodyHeader } from "./BodyHeader";
-import { getArticleById } from "../utils/api";
+import { getArticleById } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { CommentSection } from "./CommentSection";
 import { UpVotes } from "./UpVotes";
 
 export const SingleArticle = () => {
   const [article, setArticle] = useState([]);
+  const [isloading, setIsLoading] = useState(true);
 
   const { article_id } = useParams();
 
   useEffect(() => {
     getArticleById(article_id).then((article) => {
       setArticle(article);
+      setIsLoading(false);
     });
   }, []);
+
+  if (isloading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>
