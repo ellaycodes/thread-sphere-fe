@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 
 export const CommentSection = ({ article }) => {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   const { article_id } = useParams();
 
@@ -12,11 +13,18 @@ export const CommentSection = ({ article }) => {
     getCommentsByArticleId(article_id)
       .then((commentsArr) => {
         setComments(commentsArr);
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  if (isLoading) {
+    return (
+      <p>Loading...</p>
+    )
+  }
 
   return (
     <>
