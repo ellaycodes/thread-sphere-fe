@@ -18,8 +18,7 @@ export const getAllArticles = (author, topic, sort_by, order) => {
 };
 
 export const getArticleById = (id) => {
-  return instance.get(`/articles/${id}`).then((data) => {
-    console.log(data);
-    return data;
+  return instance.get(`/articles/${id}`).then(({ data }) => {
+    return data.article;
   });
 };

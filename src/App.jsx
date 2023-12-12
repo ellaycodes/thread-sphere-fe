@@ -1,16 +1,16 @@
 import "./App.css";
 import { Header } from "../components/header";
-import { Body } from "../components/body";
+import { AllArticles } from "../components/AllArticles";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ArticleBody } from "../components/ArticleBody";
+import { SingleArticle } from "../components/SingleArticle";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Body />} />
-        <Route path="/article/:article_id" element={<ArticleBody />} />
+        <Route path="/" element={<AllArticles />} />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </BrowserRouter>
   );
