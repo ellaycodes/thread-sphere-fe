@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CommentCard } from "./CommentCard";
-import { getCommentsByArticleId } from "../utils/api";
+import { getCommentsByArticleId } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 export const CommentSection = ({ article }) => {
