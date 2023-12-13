@@ -28,7 +28,6 @@ export const SingleArticle = () => {
       <div className="article_stats">
         <p>{article.topic}</p>
         <p>{article.created_at}</p>
-        <p>{article.votes}</p>
         <UpVotes article={article} />
       </div>
       <div className="article_body">
