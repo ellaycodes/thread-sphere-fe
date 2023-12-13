@@ -29,9 +29,18 @@ export const getCommentsByArticleId = (id) => {
   });
 };
 
-export const patchArticleVotes = (id) => {
+export const patchArticleVotes = (id, voteChange) => {
   const patchBody = {
-    inc_votes: 1,
+    inc_votes: voteChange,
+  };
+  return instance.patch(`/articles/${id}`, patchBody).then(({ data }) => {
+    return data.article;
+  });
+};
+
+export const patchArticleDownVotes = (id, voteChange) => {
+  const patchBody = {
+    inc_votes: -voteChange,
   };
   return instance.patch(`/articles/${id}`, patchBody).then(({ data }) => {
     return data.article;
