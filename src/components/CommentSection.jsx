@@ -9,6 +9,7 @@ export const CommentSection = ({ article }) => {
   const [addComment, setAddComment] = useState(false);
   const [hideButton, setHideButton] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [bodyError, setBodyError] = useState(false);
 
   const { article_id } = useParams();
 
@@ -40,27 +41,33 @@ export const CommentSection = ({ article }) => {
     }
     setIsSubmitting(true);
     const postBody = {
-      username: "grumpy19",
+      username: "jessjelly",
       body: event.target[0].value,
     };
 
-    postCommentToArticle(article_id, postBody)
-      .then((res) => {
-        setAddComment(false);
-        setHideButton(false);
-        setComments((currComments) => {
-          return [res[0], ...currComments];
+    if (postBody.body.length < 1) {
+      setBodyError(true);
+    }
+
+    if (bodyError === false) {
+      postCommentToArticle(article_id, postBody)
+        .then((res) => {
+          setAddComment(false);
+          setHideButton(false);
+          setComments((currComments) => {
+            return [res[0], ...currComments];
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          setComments((currComments) => {
+            return [...currComments];
+          });
+        })
+        .finally(() => {
+          setIsSubmitting(false);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        setComments((currComments) => {
-          return [...currComments];
-        });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    }
   };
 
   if (isLoading) {
@@ -79,8 +86,16 @@ export const CommentSection = ({ article }) => {
       </div>
       {addComment ? (
         <form className="add_comment" onSubmit={handlePostComment}>
-          <textarea placeholder="Add comment"></textarea>
-          <button className="post_comment" disabled={isSubmitting}>Post</button>
+          <textarea placeholder="Add comment" required></textarea>
+          {bodyError ? (
+            <button className="post_comment" disabled={true}>
+              Post
+            </button>
+          ) : (
+            <button className="post_comment" disabled={isSubmitting}>
+              Post
+            </button>
+          )}
         </form>
       ) : null}
       {comments.map((comment) => {
