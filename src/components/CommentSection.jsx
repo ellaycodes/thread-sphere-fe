@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CommentCard } from "./CommentCard";
 import { getCommentsByArticleId, postCommentToArticle } from "../../utils/api";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 export const CommentSection = ({ article }) => {
+  const { currUser } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [addComment, setAddComment] = useState(false);
@@ -41,7 +43,7 @@ export const CommentSection = ({ article }) => {
     }
     setIsSubmitting(true);
     const postBody = {
-      username: "jessjelly",
+      username: currUser,
       body: event.target[0].value,
     };
 

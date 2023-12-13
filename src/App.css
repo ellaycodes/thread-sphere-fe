@@ -27,7 +27,8 @@ h3 {
 }
 
 p {
-  font-size: 2.4vw;
+  font-size: 2vw;
+  margin: 0;
 }
 
 nav {
@@ -52,7 +53,7 @@ nav {
 }
 
 .article_card {
-  width: 80vw;
+  width: 90vw;
   padding: 2vw;
   margin: 1vw;
   box-sizing: content-box;
@@ -143,6 +144,52 @@ textarea {
   border-radius: 0px 10px 10px 0;
 }
 
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user_card {
+  width: 70vw;
+  height: 20vh;
+  border: 1px solid black;
+  padding: 2vh 2vw;
+  border-radius: 10px;
+  margin: 2vh;
+  display: grid;
+  grid-template-columns: 20vw auto;
+  grid-template-rows: auto auto auto;
+  text-align: left;
+  box-shadow: 3px 3px 5px grey;
+}
+
+.user_card > img {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: auto;
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+.user_name {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-self: self-end;
+}
+
+.user_username {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.user_card > button {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+ 
 @media screen and (min-width: 601px) {
   h1 {
     font-size: 40px;
@@ -157,11 +204,11 @@ textarea {
   }
 
   p {
-    font-size: 12px;
+    font-size: 17px;
   }
 
   .article_card {
-    width: 550px;
+    width: 650px;
   }
 
   .article_img {
