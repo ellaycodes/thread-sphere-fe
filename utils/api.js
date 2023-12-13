@@ -25,6 +25,24 @@ export const getArticleById = (id) => {
 
 export const getCommentsByArticleId = (id) => {
   return instance.get(`/articles/${id}/comments`).then(({ data }) => {
-      return data.comments;
-    });
+    return data.comments;
+  });
+};
+
+export const patchArticleVotes = (id, voteChange) => {
+  const patchBody = {
+    inc_votes: voteChange,
+  };
+  return instance.patch(`/articles/${id}`, patchBody).then(({ data }) => {
+    return data.article;
+  });
+};
+
+export const patchArticleDownVotes = (id, voteChange) => {
+  const patchBody = {
+    inc_votes: -voteChange,
+  };
+  return instance.patch(`/articles/${id}`, patchBody).then(({ data }) => {
+    return data.article;
+  });
 };
