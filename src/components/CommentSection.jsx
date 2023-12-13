@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CommentCard } from "./CommentCard";
-import { getCommentsByArticleId } from "../../utils/api";
+import { getCommentsByArticleId, postCommentToArticle } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 export const CommentSection = ({ article }) => {
@@ -8,6 +8,7 @@ export const CommentSection = ({ article }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [addComment, setAddComment] = useState(false);
   const [hideButton, setHideButton] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { article_id } = useParams();
 
@@ -33,8 +34,33 @@ export const CommentSection = ({ article }) => {
   };
 
   const handlePostComment = (event) => {
-    event.preventDefault()
-    console.log(event.target.value);// TODO
+    event.preventDefault();
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
+    const postBody = {
+      username: "grumpy19",
+      body: event.target[0].value,
+    };
+
+    postCommentToArticle(article_id, postBody)
+      .then((res) => {
+        setAddComment(false);
+        setHideButton(false);
+        setComments((currComments) => {
+          return [res[0], ...currComments];
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setComments((currComments) => {
+          return [...currComments];
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   if (isLoading) {
@@ -54,7 +80,7 @@ export const CommentSection = ({ article }) => {
       {addComment ? (
         <form className="add_comment" onSubmit={handlePostComment}>
           <textarea placeholder="Add comment"></textarea>
-          <button className="post_comment">Post</button>
+          <button className="post_comment" disabled={isSubmitting}>Post</button>
         </form>
       ) : null}
       {comments.map((comment) => {
