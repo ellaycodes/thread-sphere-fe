@@ -17,7 +17,7 @@ export const UpVotes = ({ article }) => {
 
   return (
     <div className="vote">
-      <p>{newArticle.votes}</p>
+      <p>Votes: {newArticle.votes}</p>
       <button onClick={handleUpvote}>⬆</button>
     </div>
   );

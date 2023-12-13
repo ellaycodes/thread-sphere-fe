@@ -83,5 +83,33 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 15vw;
+}
+
+.add_comment {
+  margin: 0 2vw;
+  height: 10vh;
+  border: 0px;
+  border: 1px solid grey;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: stretch;
+  border-radius: 10px;
+}
+
+textarea {
+  width: 90%;
+  height: 5vh;
+  padding: 1vw;
+  background-color: transparent;
+  border: 0px;
+}
+
+.post_comment {
   width: 10vw;
+  height: 10vh;
+  background-color: lightgray;
+  border: 0px;
+  border-left: 1px solid grey;
+  border-radius: 0px 10px 10px 0;
 }

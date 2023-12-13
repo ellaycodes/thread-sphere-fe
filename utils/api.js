@@ -37,3 +37,9 @@ export const patchArticleVotes = (id) => {
     return data.article;
   });
 };
+
+export const postCommentToArticle = (id, postBody) => {
+  return instance.post(`articles/${id}/comments`, postBody).then(({ data }) => {
+    console.log(data);
+  });
+};
