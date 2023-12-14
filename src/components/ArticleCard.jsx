@@ -11,7 +11,7 @@ export const ArticleCard = ({ article }) => {
       <section className="article_info">
         <div className="article_stats">
           <p>{article.author}</p>
-          <p>{article.topic}</p>
+          <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
           <p>Votes: {article.votes}</p>
           <p>Comments: {article.comment_count}</p>
         </div>
