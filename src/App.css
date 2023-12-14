@@ -1,11 +1,40 @@
 #root {
   text-align: center;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5vw;
+}
+
+h1 {
+  font-size: 6vw;
+}
+
+h2 {
+  font-size: 5vw;
+}
+
+h3 {
+  font-size: 4vw;
+}
+
+p {
+  font-size: 2vw;
+  margin: 0;
 }
 
 nav {
   display: flex;
   justify-content: space-around;
+  width: 50%;
 }
 
 .article_img {
@@ -24,9 +53,9 @@ nav {
 }
 
 .article_card {
-  width: 80vw;
+  width: 90vw;
   padding: 2vw;
-  margin: 5vw;
+  margin: 1vw;
   box-sizing: content-box;
   border: 1px solid black;
   display: flex;
@@ -45,11 +74,13 @@ nav {
   gap: 5%;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .comment_card {
   border-bottom: 1px solid black;
   margin: 4vh 2vw;
+  width: 90%;
 }
 
 .comment_header {
@@ -59,6 +90,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90%;
 }
 
 .comment_stats {
@@ -73,6 +105,8 @@ nav {
 
 .comment_body {
   text-align: left;
+  min-height: 10vh;
+  margin: 2vh;
 }
 
 button {
@@ -83,7 +117,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 15vw;
+  width: 25vw;
 }
 
 .add_comment {
@@ -112,4 +146,76 @@ textarea {
   border: 0px;
   border-left: 1px solid grey;
   border-radius: 0px 10px 10px 0;
+}
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user_card {
+  width: 70vw;
+  height: 20vh;
+  border: 1px solid black;
+  padding: 2vh 2vw;
+  border-radius: 10px;
+  margin: 2vh;
+  display: grid;
+  grid-template-columns: 20vw auto;
+  grid-template-rows: auto auto auto;
+  text-align: left;
+  box-shadow: 3px 3px 5px grey;
+}
+
+.user_card > img {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: auto;
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+.user_name {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  align-self: self-end;
+}
+
+.user_username {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.user_card > button {
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+ 
+@media screen and (min-width: 601px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 25px;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  .article_card {
+    width: 650px;
+  }
+
+  .article_img {
+    height: 200px;
+  }
 }
