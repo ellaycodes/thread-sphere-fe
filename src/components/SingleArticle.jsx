@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BodyHeader } from "./BodyHeader";
 import { getArticleById } from "../../utils/api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { UpVotes } from "./UpVotes";
 import { CommentSection } from "./CommentSection";
 
@@ -26,7 +26,7 @@ export const SingleArticle = () => {
     <>
       <BodyHeader title={article.title} />
       <div className="article_stats">
-        <p>{article.topic}</p>
+        <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
         <p>{article.created_at}</p>
         <UpVotes article={article} />
       </div>

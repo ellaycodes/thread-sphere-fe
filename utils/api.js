@@ -62,5 +62,11 @@ export const getUsers = () => {
 };
 
 export const deleteComment = (id) => {
-  return instance.delete(`/comments/${id}`)
-}
+  return instance.delete(`/comments/${id}`);
+};
+
+export const getTopics = () => {
+  return instance.get(`/topics`).then(({ data }) => {
+    return data.topic;
+  });
+};
