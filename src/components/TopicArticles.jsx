@@ -9,23 +9,23 @@ export const TopicArticles = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     getAllArticles().then((articleArr) => {
-      articleArr.map((article) => {
-        if (article.topic === topic) {
-          setArticles((topicArr) => {
-            return [...topicArr, article];
-          });
-        }
-      });
+      const filteredArticles = articleArr.filter(
+        (article) => article.topic === topic
+      );
+      setArticles(filteredArticles);
     });
-  }, []);
-
-  console.log(articles);
+  }, [topic]);
 
   return (
     <>
-    <BodyHeader title={topic.toUpperCase()}/>
+      <BodyHeader title={topic.toUpperCase()} />
       {articles.map((article) => {
-        return <ArticleCard article={article} key={article.article_id} />;
+        return (
+          <ArticleCard
+            article={article}
+            key={`${article.article_id}${article.topic}`}
+          />
+        );
       })}
     </>
   );

@@ -4,12 +4,12 @@ const instance = axios.create({
   baseURL: "https://thread-sphere.onrender.com/api/",
 });
 
-export const getAllArticles = (author, topic, sort_by, order) => {
+export const getAllArticles = (sort_by, order) => {
   return instance
-    .get("/articles", {
-      params: { author: author, topic: topic, sort_by: sort_by, order: order },
-    })
-    .then(({ data }) => {
+  .get("/articles", {
+    params: { sort_by: sort_by, order: order },
+  })
+  .then(({ data }) => {
       return data.articles;
     })
     .catch((err) => {
