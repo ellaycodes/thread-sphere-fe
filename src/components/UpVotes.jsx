@@ -6,8 +6,6 @@ export const UpVotes = ({ article }) => {
   const [upClicked, setUpClicked] = useState(false);
   const [downClicked, setDownClicked] = useState(false);
 
-  console.log(incVote);
-
   const handleUpvote = () => {
     const voteChange = downClicked ? 2 : 1;
     setIncVotes((currVote) => {
@@ -56,15 +54,17 @@ export const UpVotes = ({ article }) => {
   return (
     <div className="vote">
       <p>{incVote}</p>
-      <button onClick={handleUpvote} disabled={upClicked}>
-        ⬆
-      </button>
-      <button onClick={handleDownvote} disabled={downClicked}>
-        ⬇
-      </button>
-      {upClicked || downClicked ? (
-        <button onClick={handleClear}>Clear</button>
-      ) : <button disabled={true}>Clear</button>}
+      <div className="voting buttons">
+        <button onClick={handleUpvote} disabled={upClicked}>
+          ⬆
+        </button>
+        <button onClick={handleDownvote} disabled={downClicked}>
+          ⬇
+        </button>
+        {upClicked || downClicked ? (
+          <button onClick={handleClear}>Clear</button>
+        ) : <button disabled={true}>Clear</button>}
+      </div>
     </div>
   );
 };

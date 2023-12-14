@@ -12,8 +12,8 @@ export const ArticleCard = ({ article }) => {
         <div className="article_stats">
           <p>{article.author}</p>
           <p>{article.topic}</p>
-          <p>{article.votes}</p>
-          <p>{article.comment_count}</p>
+          <p>Votes: {article.votes}</p>
+          <p>Comments: {article.comment_count}</p>
         </div>
         <h3>{article.title}</h3>
       </section>

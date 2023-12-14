@@ -48,7 +48,19 @@ export const patchArticleDownVotes = (id, voteChange) => {
 };
 
 export const postCommentToArticle = (id, postBody) => {
-  return instance.post(`/articles/${id}/comments`, postBody).then(({data}) => {
-    return data.comments
+  return instance
+    .post(`/articles/${id}/comments`, postBody)
+    .then(({ data }) => {
+      return data.comments;
+    });
+};
+
+export const getUsers = () => {
+  return instance.get(`/users`).then(({ data }) => {
+    return data.users;
   });
 };
+
+export const deleteComment = (id) => {
+  return instance.delete(`/comments/${id}`)
+}
