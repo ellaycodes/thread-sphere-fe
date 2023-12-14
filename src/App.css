@@ -52,12 +52,16 @@ nav {
   align-items: center;
 }
 
+.article_info {
+  width: 80%;
+}
+
 .article_card {
   width: 90vw;
   padding: 2vw;
   margin: 1vw;
   box-sizing: content-box;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   display: flex;
   justify-content: flex-start;
   text-align: left;
