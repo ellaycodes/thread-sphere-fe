@@ -4,14 +4,23 @@ import { UserContext } from "../contexts/UserContext";
 export const UserCard = ({ user }) => {
   const { currUser, setCurrUser } = useContext(UserContext);
   const [isUser, setIsUser] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     setIsUser(currUser === user.username);
+    setIsLoading(false)
+    localStorage.setItem('user', currUser)
   }, [currUser, user.username]);
 
   const handleSwitchUser = () => {
     setCurrUser(user.username);
   };
+
+  if (isLoading) {
+    return (
+        <p>Loading...</p>
+    )
+  }
 
   return (
     <div className="user_card">

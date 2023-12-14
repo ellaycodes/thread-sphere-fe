@@ -60,3 +60,7 @@ export const getUsers = () => {
     return data.users;
   });
 };
+
+export const deleteComment = (id) => {
+  return instance.delete(`/comments/${id}`)
+}

@@ -5,7 +5,11 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [users, setUsers] = useState([]);
-  const [currUser, setCurrUser] = useState('tickle122');
+  const [currUser, setCurrUser] = useState(() => {
+    const saved = localStorage.getItem("user");
+    const initialValue = saved;
+    return initialValue || "tickle122";
+  });
 
   useEffect(() => {
     getUsers().then((userArr) => {
