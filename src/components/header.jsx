@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-    return (
-        <>
-        <h1>Thread Sphere</h1>
-        <nav>
-            <Link to={'/'}>Home</Link>
-            <a href="">Topics</a>
-            <a href="">Profile</a>
-        </nav>
-        </>
-    )
-}
+  return (
+    <header>
+      <Link to={`/`} className="h1">Thread Sphere</Link>
+      <nav>
+        <Link to={"/"}>Home</Link>
+        <Link to={"/profile"}>Profile</Link>
+        <Link to={"/topics"}>Topics</Link>
+      </nav>
+    </header>
+  );
+};

@@ -1,8 +1,19 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const ArticleCard = ({ article }) => {
+  const navigate = useNavigate();
+
+  const handleNavigateToArticle = () => {
+    navigate(`/article/${article.article_id}`);
+  };
+
+  const handleNavigateToTopic = (e) => {
+    e.stopPropagation();
+    navigate(`/topics/${article.topic}`);
+  };
+
   return (
-    <Link to={`/article/${article.article_id}`} className="article_card">
+    <div className="article_card" onClick={handleNavigateToArticle}>
       <img
         src={article.article_img_url}
         alt="article image"
@@ -11,12 +22,12 @@ export const ArticleCard = ({ article }) => {
       <section className="article_info">
         <div className="article_stats">
           <p>{article.author}</p>
-          <p>{article.topic}</p>
-          <p>{article.votes}</p>
-          <p>{article.comment_count}</p>
+          <p onClick={handleNavigateToTopic}>{article.topic}</p>
+          <p>Votes: {article.votes}</p>
+          <p>Comments: {article.comment_count}</p>
         </div>
         <h3>{article.title}</h3>
       </section>
-    </Link>
+    </div>
   );
 };

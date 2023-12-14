@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BodyHeader } from "./BodyHeader";
 import { getArticleById } from "../../utils/api";
-import { useParams } from "react-router-dom";
-import { CommentSection } from "./CommentSection";
+import { useParams, Link } from "react-router-dom";
 import { UpVotes } from "./UpVotes";
+import { CommentSection } from "./CommentSection";
 
 export const SingleArticle = () => {
   const [article, setArticle] = useState([]);
@@ -26,13 +26,12 @@ export const SingleArticle = () => {
     <>
       <BodyHeader title={article.title} />
       <div className="article_stats">
-        <p>{article.topic}</p>
+        <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
         <p>{article.created_at}</p>
-        <p>{article.votes}</p>
-        <UpVotes />
+        <UpVotes article={article} />
       </div>
       <div className="article_body">
-        <img src={article.article_img_url} alt="" className="hero_img"/>
+        <img src={article.article_img_url} alt="" className="hero_img" />
         <div className="article_content">
           <p>{article.author}</p>
           <p>{article.body}</p>

@@ -1,14 +1,43 @@
-import { UpVotes } from "./UpVotes";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { deleteComment } from "../../utils/api.js";
 
 export const CommentCard = ({ comment }) => {
+  const { currUser } = useContext(UserContext);
+  const [canDelete, setCanDelete] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (comment.author === currUser) {
+      setCanDelete(true);
+    }
+  }, [comment.author, currUser]);
+
+  const handleDeleteComment = () => {
+    deleteComment(comment.comment_id)
+      .then(() => {
+        setIsDeleted(true);
+      })
+      .catch(() => {
+        setIsDeleted(false);
+        setIsError(true);
+      });
+  };
+
+  if (isDeleted) return null;
+
   return (
     <div className="comment_card">
       <div className="comment_stats">
         <p>{comment.author}</p>
-        <p>{comment.votes}</p>
-        <UpVotes />
+        <p>Votes: {comment.votes}</p>
+        {canDelete ? (
+          <button onClick={handleDeleteComment}>Delete</button>
+        ) : null}
       </div>
       <p className="comment_body">{comment.body}</p>
+      {isError ? <p style={{color: "red"}}>Comment has not been deleted</p> : null}
     </div>
   );
 };
