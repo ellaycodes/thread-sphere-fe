@@ -11,7 +11,11 @@ export const ArticleCard = ({ article }) => {
     e.stopPropagation();
     navigate(`/topics/${article.topic}`);
   };
-
+  
+  const unformattedDate = new Date(article.created_at)
+  const dateFormatter = new Intl.DateTimeFormat('en-GB')
+  const date = dateFormatter.format(unformattedDate)
+  
   return (
     <div className="article_card" onClick={handleNavigateToArticle}>
       <img
@@ -21,6 +25,7 @@ export const ArticleCard = ({ article }) => {
       />
       <section className="article_info">
         <div className="article_stats">
+          <p>{date}</p>
           <p>{article.author}</p>
           <p onClick={handleNavigateToTopic}>{article.topic}</p>
           <p>Votes: {article.votes}</p>
