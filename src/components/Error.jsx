@@ -1,8 +1,8 @@
-export const Error = () => {
+export const Error = ({ message }) => {
   return (
-    <div class="error-component">
-      <p class="error-message">
-        Error: Failed to load data. Please try again later.
+    <div className="error-component">
+      <p className="error-message">
+        {message || 'Error: Failed to load data. Please try again later.'}
       </p>
     </div>
   );

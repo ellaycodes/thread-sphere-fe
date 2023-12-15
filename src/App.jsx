@@ -7,6 +7,7 @@ import { Profile } from "./components/Profile";
 import { Topics } from "./components/Topics";
 import { UserProvider } from "./contexts/UserContext";
 import { TopicArticles } from "./components/TopicArticles";
+import { Error } from "./components/Error";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/topics" element={<Topics />} />
           <Route path="/topics/:topic" element={<TopicArticles />} />
+          <Route path="/*" element={<Error message={'Error: Page does not exist'}/>} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

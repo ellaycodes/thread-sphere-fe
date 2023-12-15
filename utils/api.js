@@ -52,10 +52,6 @@ export const patchArticleVotes = (id, voteChange) => {
     .then(({ data }) => {
       return data.article;
     })
-    .catch((error) => {
-      const errorMsg = `Error: ${error.response.status} ${error.response.data.msg}`;
-      return errorMsg;
-    });
 };
 
 export const patchArticleDownVotes = (id, voteChange) => {
@@ -67,10 +63,6 @@ export const patchArticleDownVotes = (id, voteChange) => {
     .then(({ data }) => {
       return data.article;
     })
-    .catch((error) => {
-      const errorMsg = `Error: ${error.response.status} ${error.response.data.msg}`;
-      return errorMsg;
-    });
 };
 
 export const postCommentToArticle = (id, postBody) => {

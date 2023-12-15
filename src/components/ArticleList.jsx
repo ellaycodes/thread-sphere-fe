@@ -24,13 +24,14 @@ export const ArticleList = () => {
       })
       .catch((error) => {
         setApiError(String(error));
+        setIsLoading(false)
       });
   }, [sort_by, order]);
 
   if (isLoading) {
-    return <Loading/>;
+    return <Loading />;
   } else if (apiError) {
-    return <p>{apiError}</p>;
+    return <Error message={apiError} />;
   }
 
   return (
