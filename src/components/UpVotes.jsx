@@ -15,7 +15,7 @@ export const UpVotes = ({ article }) => {
     setUpClicked(true);
     setDownClicked(false);
 
-    patchArticleVotes(article.article_id, voteChange).catch((err) => {
+    patchArticleVotes( voteChange).catch((err) => {
       console.log(err);
       setIncVotes((currVote) => currVote - 1);
       setUpClicked(false);
@@ -58,13 +58,22 @@ export const UpVotes = ({ article }) => {
   return (
     <div className="vote">
       <p>{incVote}</p>
-      <div className="voting buttons">
-        <button onClick={handleUpvote} disabled={upClicked}>
-          ⬆
-        </button>
-        <button onClick={handleDownvote} disabled={downClicked}>
-          ⬇
-        </button>
+      <div className="voting_buttons">
+        {error ? <div>
+          <button className="button_error" onClick={handleUpvote} disabled={upClicked}>
+            ⬆
+          </button>
+          <button className="button_error" onClick={handleDownvote} disabled={downClicked}>
+            ⬇
+          </button>
+        </div> : <div>
+          <button onClick={handleUpvote} disabled={upClicked}>
+            ⬆
+          </button>
+          <button onClick={handleDownvote} disabled={downClicked}>
+            ⬇
+          </button>
+        </div>}
         {upClicked || downClicked ? (
           <button onClick={handleClear}>Clear</button>
         ) : <button disabled={true}>Clear</button>}

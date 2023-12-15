@@ -3,45 +3,46 @@ import { CommentCard } from "./CommentCard";
 import { getCommentsByArticleId, postCommentToArticle } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import { Loading } from "./Loading";
 
 export const CommentSection = ({ article }) => {
   const { currUser } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [addComment, setAddComment] = useState(false);
-  const [hideButton, setHideButton] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [addCommentButton, setAddCommentButton] = useState(false);
+  const [discardButton, setDiscardButton] = useState(false);
   const [bodyError, setBodyError] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   const { article_id } = useParams();
 
   useEffect(() => {
     getCommentsByArticleId(article_id)
-      .then((commentsArr) => {
-        setComments(commentsArr);
+      .then((response) => {
+        if (typeof response === "string") {
+          setApiError(response);
+        } else {
+          setComments(response);
+        }
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setApiError(String(err));
       });
   }, []);
 
-  const handleAddComment = () => {
-    setAddComment(true);
-    setHideButton(true);
+  const handleAddCommentButton = () => {
+    setAddCommentButton(true);
+    setDiscardButton(true);
   };
 
   const handleDiscardComment = () => {
-    setAddComment(false);
-    setHideButton(false);
+    setAddCommentButton(false);
+    setDiscardButton(false);
   };
 
   const handlePostComment = (event) => {
     event.preventDefault();
-    if (isSubmitting) {
-      return;
-    }
-    setIsSubmitting(true);
     const postBody = {
       username: currUser,
       body: event.target[0].value,
@@ -53,48 +54,64 @@ export const CommentSection = ({ article }) => {
 
     if (bodyError === false) {
       postCommentToArticle(article_id, postBody)
-        .then((res) => {
-          setAddComment(false);
-          setHideButton(false);
-          setComments((currComments) => {
-            return [res[0], ...currComments];
-          });
+        .then((response) => {
+          if (typeof response === "string") {
+            setBodyError(true);
+          } else {
+            setAddCommentButton(false);
+            setDiscardButton(false);
+            setComments((currComments) => {
+              return [response[0], ...currComments];
+            });
+          }
         })
         .catch((err) => {
-          console.log(err);
           setComments((currComments) => {
             return [...currComments];
           });
         })
         .finally(() => {
-          setIsSubmitting(false);
         });
     }
   };
 
+  const handleInputChange = () => {
+    setBodyError(false)
+  }
+
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading/>;
+  } else if (apiError) {
+    return <p>{apiError}</p>;
   }
 
   return (
     <>
       <div className="comment_header">
         <p>Comments: {article.comment_count}</p>
-        {hideButton ? (
+        {discardButton ? (
           <button onClick={handleDiscardComment}>Discard Comment</button>
         ) : (
-          <button onClick={handleAddComment}>Add Comment</button>
+          <button onClick={handleAddCommentButton}>Add Comment</button>
         )}
       </div>
-      {addComment ? (
+      {addCommentButton ? (
         <form className="add_comment" onSubmit={handlePostComment}>
-          <textarea placeholder="Add comment" required></textarea>
+          {bodyError ? (
+            <input
+              onChange={handleInputChange}
+              className="error"
+              placeholder="You must enter a comment before you can post"
+            ></input>
+          ) : (
+            <input placeholder="Add comment"></input>
+          )}
           {bodyError ? (
             <button className="post_comment" disabled={true}>
               Post
             </button>
           ) : (
-            <button className="post_comment" disabled={isSubmitting}>
+            <button className="post_comment" disabled={false}>
               Post
             </button>
           )}
