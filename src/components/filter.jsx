@@ -22,13 +22,13 @@ export const Filter = ({setSortBy, order, setOrder}) => {
   };
 
   return (
-    <>
+    <div className="filter_section">
       <select name="filter" id="filter" onChange={handleSortChange}>
         <option value="Date">Date</option>
         <option value="Comment Count">Comment Count</option>
         <option value="Votes">Votes</option>
       </select>
       <button onClick={toggleOrder}>{order === "asc" ? "⬆" : "⬇"}</button>
-    </>
+    </div>
   );
 };

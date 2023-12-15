@@ -27,7 +27,7 @@ h3 {
 }
 
 p {
-  font-size: 2vw;
+  font-size: 3vw;
   margin: 0;
 }
 
@@ -37,8 +37,21 @@ nav {
   width: 50%;
 }
 
+.filter_section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 2vw;
+  height: 3vh;
+}
+
+.filter_section > button {
+  height: 3vh;
+}
+
 .article_img {
-  width: 30vw;
+  width: 25vw;
+  max-width: 250px;
   border-radius: 10px;
 }
 
@@ -178,24 +191,27 @@ input {
 
 .user_card {
   width: 70vw;
-  height: 20vh;
+  max-width: 500px;
+  max-height: 200px;
   border: 1px solid black;
   padding: 2vh 2vw;
   border-radius: 10px;
   margin: 2vh;
   display: grid;
-  grid-template-columns: 20vw auto;
+  grid-template-columns: 1.5fr 3fr;
   grid-template-rows: auto auto auto;
   text-align: left;
+  justify-items: left;
   box-shadow: 3px 3px 5px grey;
 }
 
 .user_card > img {
-  width: 20vh;
+  min-width: 10vw;
+  max-width: 15vw;
   height: 20vh;
+  max-height: 10vh;
   border-radius: 50%;
   border: 1px solid black;
-  margin: auto;
   grid-column: 1/2;
   grid-row: 1/4;
 }
@@ -203,7 +219,6 @@ input {
 .user_name {
   grid-column: 2/3;
   grid-row: 1/2;
-  align-self: self-end;
 }
 
 .user_username {
@@ -214,6 +229,8 @@ input {
 .user_card > button {
   grid-column: 2/3;
   grid-row: 3/4;
+  height: 3vh;
+  width: 90%;
 }
 
 .topics_body {
@@ -306,7 +323,7 @@ a:hover {
   }
 
   p {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   .article_card {
