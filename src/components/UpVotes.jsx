@@ -78,6 +78,7 @@ export const UpVotes = ({ article }) => {
           <button onClick={handleClear}>Clear</button>
         ) : <button disabled={true}>Clear</button>}
       </div>
+      {error ? <p>Error</p> : null}
     </div>
   );
 };

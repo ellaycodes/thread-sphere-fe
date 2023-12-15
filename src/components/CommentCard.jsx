@@ -45,6 +45,7 @@ export const CommentCard = ({ comment }) => {
         </>
       ) : null}
       <p className="comment_body">{comment.body}</p>
+      {isError ? <p style={{color: "red"}}>Comment has not been deleted</p> : null}
     </div>
   );
 };
