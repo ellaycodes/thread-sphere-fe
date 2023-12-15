@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { Loading } from "./Loading";
 
 export const UserCard = ({ user }) => {
   const { currUser, setCurrUser } = useContext(UserContext);
@@ -18,7 +19,7 @@ export const UserCard = ({ user }) => {
 
   if (isLoading) {
     return (
-        <p>Loading...</p>
+        <Loading/>
     )
   }
 

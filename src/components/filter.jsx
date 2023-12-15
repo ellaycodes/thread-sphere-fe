@@ -1,9 +1,6 @@
-import { useState } from "react";
-
 export const Filter = ({setSortBy, order, setOrder}) => {
 
   const handleSortChange = (event) => {
-    // event.preventDefault()
     const sortOption = event.target.value;
     switch (sortOption) {
       case "Date":

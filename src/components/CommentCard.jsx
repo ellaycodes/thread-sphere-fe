@@ -19,7 +19,7 @@ export const CommentCard = ({ comment }) => {
       .then(() => {
         setIsDeleted(true);
       })
-      .catch(() => {
+      .catch((error) => {
         setIsDeleted(false);
         setIsError(true);
       });
@@ -36,8 +36,15 @@ export const CommentCard = ({ comment }) => {
           <button onClick={handleDeleteComment}>Delete</button>
         ) : null}
       </div>
+      {isError ? (
+        <>
+          <p style={{ color: "red" }}>
+            Comment has not been deleted, please try again.
+          </p>{" "}
+          <button onClick={handleDeleteComment}>Try Again</button>
+        </>
+      ) : null}
       <p className="comment_body">{comment.body}</p>
-      {isError ? <p style={{color: "red"}}>Comment has not been deleted</p> : null}
     </div>
   );
 };

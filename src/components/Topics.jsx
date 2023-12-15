@@ -5,11 +5,25 @@ import { Link } from "react-router-dom";
 
 export const Topics = () => {
   const [topics, setTopics] = useState([]);
+  const [apiError, setApiError] = useState(null);
+  
   useEffect(() => {
-    getTopics().then((topicsArr) => {
-      setTopics(topicsArr);
-    });
+    getTopics()
+      .then((response) => {
+        if (typeof response === "string") {
+          setApiError(response);
+        } else {
+          setTopics(response);
+        }
+      })
+      .catch((err) => {
+        setApiError(String(err));
+      });
   }, []);
+
+  if (apiError) {
+    return <p>{apiError}</p>
+  }
 
   return (
     <div className="topics_body">
