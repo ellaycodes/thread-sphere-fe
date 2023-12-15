@@ -5,8 +5,9 @@ import { deleteComment } from "../../utils/api.js";
 export const CommentCard = ({ comment }) => {
   const { currUser } = useContext(UserContext);
   const [canDelete, setCanDelete] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false)
- 
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     if (comment.author === currUser) {
       setCanDelete(true);
@@ -14,12 +15,17 @@ export const CommentCard = ({ comment }) => {
   }, [comment.author, currUser]);
 
   const handleDeleteComment = () => {
-    deleteComment(comment.comment_id).then(()=>{
-      setIsDeleted(true)
-    });
+    deleteComment(comment.comment_id)
+      .then(() => {
+        setIsDeleted(true);
+      })
+      .catch(() => {
+        setIsDeleted(false);
+        setIsError(true);
+      });
   };
 
-  if (isDeleted) return null
+  if (isDeleted) return null;
 
   return (
     <div className="comment_card">
@@ -31,6 +37,7 @@ export const CommentCard = ({ comment }) => {
         ) : null}
       </div>
       <p className="comment_body">{comment.body}</p>
+      {isError ? <p style={{color: "red"}}>Comment has not been deleted</p> : null}
     </div>
   );
 };

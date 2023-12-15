@@ -5,6 +5,7 @@ export const UpVotes = ({ article }) => {
   const [incVote, setIncVotes] = useState(article.votes);
   const [upClicked, setUpClicked] = useState(false);
   const [downClicked, setDownClicked] = useState(false);
+  const [error, setError] = useState(false)
 
   const handleUpvote = () => {
     const voteChange = downClicked ? 2 : 1;
@@ -18,6 +19,7 @@ export const UpVotes = ({ article }) => {
       console.log(err);
       setIncVotes((currVote) => currVote - 1);
       setUpClicked(false);
+      setError(true)
     });
   };
 
@@ -33,6 +35,7 @@ export const UpVotes = ({ article }) => {
       console.log(err);
       setIncVotes((currVote) => currVote + 1);
       setDownClicked(false);
+      setError(true)
     });
   };
 
@@ -48,6 +51,7 @@ export const UpVotes = ({ article }) => {
       console.log(err);
       setIncVotes((currVote) => currVote);
       setUpClicked(false);
+      setError(true)
     });
   };
 
@@ -65,6 +69,7 @@ export const UpVotes = ({ article }) => {
           <button onClick={handleClear}>Clear</button>
         ) : <button disabled={true}>Clear</button>}
       </div>
+      {error ? <p>Error</p> : null}
     </div>
   );
 };

@@ -11,11 +11,11 @@ export const ArticleCard = ({ article }) => {
     e.stopPropagation();
     navigate(`/topics/${article.topic}`);
   };
-
+  
   const unformattedDate = new Date(article.created_at)
   const dateFormatter = new Intl.DateTimeFormat('en-GB')
   const date = dateFormatter.format(unformattedDate)
-
+  
   return (
     <div className="article_card" onClick={handleNavigateToArticle}>
       <img
