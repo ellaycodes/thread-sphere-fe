@@ -15,7 +15,7 @@ export const UpVotes = ({ article }) => {
     setUpClicked(true);
     setDownClicked(false);
 
-    patchArticleVotes( voteChange).catch((err) => {
+    patchArticleVotes(article.article_id, voteChange).catch((err) => {
       console.log(err);
       setIncVotes((currVote) => currVote - 1);
       setUpClicked(false);
@@ -61,24 +61,23 @@ export const UpVotes = ({ article }) => {
       <div className="voting_buttons">
         {error ? <div>
           <button className="button_error" onClick={handleUpvote} disabled={upClicked}>
-            ⬆
+            <img src="src/assets/up.png" alt="UpVote" />
           </button>
           <button className="button_error" onClick={handleDownvote} disabled={downClicked}>
-            ⬇
+          <img src="src/assets/down.png" alt="DownVote" />
           </button>
         </div> : <div>
           <button onClick={handleUpvote} disabled={upClicked}>
-            ⬆
+          <img src="src/assets/up.png" alt="UpVote" />
           </button>
           <button onClick={handleDownvote} disabled={downClicked}>
-            ⬇
+          <img src="src/assets/down.png" alt="DownVote" />
           </button>
         </div>}
         {upClicked || downClicked ? (
-          <button onClick={handleClear}>Clear</button>
-        ) : <button disabled={true}>Clear</button>}
+          <button onClick={handleClear}><img src="src/assets/clear-alt.png" alt="Clear" /></button>
+        ) : <button disabled={true}><img src="src/assets/clear-alt.png" alt="Clear" /></button>}
       </div>
-      {error ? <p>Error</p> : null}
     </div>
   );
 };

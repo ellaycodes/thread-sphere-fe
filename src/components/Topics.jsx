@@ -2,18 +2,23 @@ import { getTopics } from "../../utils/api";
 import { BodyHeader } from "./BodyHeader";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Loading } from "./Loading";
+import { Error } from "./Error";
 
 export const Topics = () => {
   const [topics, setTopics] = useState([]);
   const [apiError, setApiError] = useState(null);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getTopics()
       .then((response) => {
         if (typeof response === "string") {
           setApiError(response);
+          setIsLoading(false);
         } else {
           setTopics(response);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -22,7 +27,9 @@ export const Topics = () => {
   }, []);
 
   if (apiError) {
-    return <p>{apiError}</p>
+    return <Error />;
+  } else if (isLoading) {
+    return <Loading />;
   }
 
   return (

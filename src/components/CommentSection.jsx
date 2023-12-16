@@ -88,11 +88,11 @@ export const CommentSection = ({ article }) => {
   return (
     <>
       <div className="comment_header">
-        <p>Comments: {article.comment_count}</p>
+        <p><img src="src/assets/comment-dots.png" alt="comments" /> {article.comment_count}</p>
         {discardButton ? (
-          <button onClick={handleDiscardComment}>Discard Comment</button>
+          <button onClick={handleDiscardComment}><img src="src/assets/minus.png" alt="Discard Comment" /></button>
         ) : (
-          <button onClick={handleAddCommentButton}>Add Comment</button>
+          <button onClick={handleAddCommentButton}><img src="src/assets/plus.png" alt="Add Comment" /></button>
         )}
       </div>
       {addCommentButton ? (

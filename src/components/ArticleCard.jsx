@@ -23,16 +23,14 @@ export const ArticleCard = ({ article }) => {
         alt="article image"
         className="article_img"
       />
-      <section className="article_info">
         <div className="article_stats">
           <p>{date}</p>
           <p>{article.author}</p>
-          <p onClick={handleNavigateToTopic}>{article.topic}</p>
-          <p>Votes: {article.votes}</p>
-          <p>Comments: {article.comment_count}</p>
+          <p onClick={handleNavigateToTopic}>t/{article.topic}</p>
+          <p><img className="icon" src="src/assets/up.png" alt="" /> {article.votes}</p>
+          <p><img className="icon" src="src/assets/comment-dots.png" alt="" /> {article.comment_count}</p>
         </div>
-        <h3>{article.title}</h3>
-      </section>
+        <h3 className="article_title">{article.title}</h3>
     </div>
   );
 };

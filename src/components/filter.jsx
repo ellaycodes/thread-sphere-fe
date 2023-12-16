@@ -1,5 +1,4 @@
-export const Filter = ({setSortBy, order, setOrder}) => {
-
+export const Filter = ({ setSortBy, order, setOrder }) => {
   const handleSortChange = (event) => {
     const sortOption = event.target.value;
     switch (sortOption) {
@@ -28,7 +27,13 @@ export const Filter = ({setSortBy, order, setOrder}) => {
         <option value="Comment Count">Comment Count</option>
         <option value="Votes">Votes</option>
       </select>
-      <button onClick={toggleOrder}>{order === "asc" ? "⬆" : "⬇"}</button>
+      <button onClick={toggleOrder}>
+        {order === "asc" ? (
+          <img className="button_icon" src="src/assets/sort-circle-up.png" alt="" />
+        ) : (
+          <img className="button_icon" src="src/assets/sort-circle-down.png" alt="" />
+        )}
+      </button>
     </div>
   );
 };

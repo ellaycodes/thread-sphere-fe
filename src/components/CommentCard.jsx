@@ -30,10 +30,10 @@ export const CommentCard = ({ comment }) => {
   return (
     <div className="comment_card">
       <div className="comment_stats">
-        <p>{comment.author}</p>
-        <p>Votes: {comment.votes}</p>
+        <p>u/{comment.author}</p>
+        <p><img src="src/assets/up.png" alt="Votes" /> {comment.votes}</p>
         {canDelete ? (
-          <button onClick={handleDeleteComment}>Delete</button>
+          <button onClick={handleDeleteComment}><img src="src/assets/redbin.png" alt="Delete" /></button>
         ) : null}
       </div>
       {isError ? (

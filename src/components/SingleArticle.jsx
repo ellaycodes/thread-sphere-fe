@@ -34,18 +34,22 @@ export const SingleArticle = () => {
     return <p>{apiError}</p>
   }
 
+  const unformattedDate = new Date(article.created_at)
+  const dateFormatter = new Intl.DateTimeFormat('en-GB')
+  const date = dateFormatter.format(unformattedDate)
+
   return (
     <>
       <BodyHeader title={article.title} />
-      <div className="article_stats">
-        <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
-        <p>{article.created_at}</p>
+      <div className="single_article_stats">
+        <Link to={`/topics/${article.topic}`}>t/{article.topic}</Link>
+        <p>{date}</p>
         <UpVotes article={article} />
       </div>
       <div className="article_body">
         <img src={article.article_img_url} alt="" className="hero_img" />
         <div className="article_content">
-          <p>{article.author}</p>
+          <p className="author">u/{article.author}</p>
           <p>{article.body}</p>
         </div>
       </div>

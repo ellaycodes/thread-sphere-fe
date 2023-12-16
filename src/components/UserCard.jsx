@@ -26,7 +26,7 @@ export const UserCard = ({ user }) => {
   return (
     <div className="user_card">
       <img src={user.avatar_url} alt="" />
-      <p className="profile_name">{user.name}</p>
+      <p className="profile_name"><b>{user.name}</b></p>
       <p className="profile_username">{user.username}</p>
       {isUser ? (
         <button onClick={handleSwitchUser} disabled>
