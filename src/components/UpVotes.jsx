@@ -61,14 +61,14 @@ export const UpVotes = ({ article }) => {
       <div className="voting_buttons">
         {error ? <div>
           <button className="button_error" onClick={handleUpvote} disabled={upClicked}>
-            <img src="src/assets/up.png" alt="UpVote" />
+            <img src="/Users/estheryekini/Northcoders/frontend/thread-sphere-fe/src/assets/up.png" alt="UpVote" />
           </button>
           <button className="button_error" onClick={handleDownvote} disabled={downClicked}>
-          <img src="src/assets/down.png" alt="DownVote" />
+          <img src="https://github.com/ellaycodes/thread-sphere-fe/blob/d44a17fab67e276f9ec7c9805118716d64fa5329/src/assets/down.png" alt="DownVote" />
           </button>
         </div> : <div>
           <button onClick={handleUpvote} disabled={upClicked}>
-          <img src="src/assets/up.png" alt="UpVote" />
+          <img src="/Users/estheryekini/Northcoders/frontend/thread-sphere-fe/src/assets/up.png" alt="UpVote" />
           </button>
           <button onClick={handleDownvote} disabled={downClicked}>
           <img src="src/assets/down.png" alt="DownVote" />

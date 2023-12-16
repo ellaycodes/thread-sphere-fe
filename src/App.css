@@ -23,7 +23,7 @@ header {
 }
 
 .home_icon {
-  width: 5vw;
+  width: 3vw;
 }
 
 .body_header {
@@ -54,8 +54,9 @@ p {
 
 nav {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: start;
+  gap: 7vw;
+  width: 40%;
 }
 
 .filter_section {
@@ -64,6 +65,7 @@ nav {
   justify-content: flex-end;
   align-self: center;
   height: 3vh;
+  min-height: 20px;
   max-height: 30px;
   grid-area: 1/1/2/2;
   margin-top: 13vh;
@@ -162,10 +164,20 @@ nav {
   margin: 2vh 0 0 0;
 }
 
+.voting_buttons > button {
+  border: 0px;
+  background-color: transparent;
+}
+
+.voting_buttons > div > button {
+  border: 0px;
+  background-color: transparent;
+}
+
 .comment_card {
   border-bottom: 5px solid lightgrey;
   margin: 2vh 2vw;
-  width: 90%;
+  width: 97%;
   grid-column: 1 / 3;
 }
 
