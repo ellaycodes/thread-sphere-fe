@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { patchArticleDownVotes, patchArticleVotes } from "../../utils/api";
+import upImg from "../assets/up.png";
+import downImg from "../assets/down.png";
+import clear from '../assets/clear-alt.png'
 
 export const UpVotes = ({ article }) => {
   const [incVote, setIncVotes] = useState(article.votes);
@@ -61,22 +64,22 @@ export const UpVotes = ({ article }) => {
       <p>{incVote}</p>
         {error ? <div>
           <button className="button_error" onClick={handleUpvote} disabled={upClicked}>
-            <img className="icon" src="/src/assets/up.png" alt="UpVote" />
+            <img className="icon" src={upImg} alt="UpVote" />
           </button>
           <button className="button_error" onClick={handleDownvote} disabled={downClicked}>
-          <img className="icon" src="/src/assets/down.png" alt="DownVote" />
+          <img className="icon" src={downImg} alt="DownVote" />
           </button>
         </div> : <div>
           <button onClick={handleUpvote} disabled={upClicked}>
-          <img className="icon" src="/src/assets/up.png" alt="UpVote" />
+          <img className="icon" src={upImg} alt="UpVote" />
           </button>
           <button onClick={handleDownvote} disabled={downClicked}>
-          <img className="icon" src="/src/assets/down.png" alt="DownVote" />
+          <img className="icon" src={downImg} alt="DownVote" />
           </button>
         </div>}
         {upClicked || downClicked ? (
-          <button onClick={handleClear}><img className="icon" src="/src/assets/clear-alt.png" alt="Clear" /></button>
-        ) : <button disabled={true}><img className="icon" src="/src/assets/clear-alt.png" alt="Clear" /></button>}
+          <button onClick={handleClear}><img className="icon" src={clear} alt="Clear" /></button>
+        ) : <button disabled={true}><img className="icon" src={clear} alt="Clear" /></button>}
       </div>
     </div>
   );

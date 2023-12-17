@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { deleteComment } from "../../utils/api.js";
+import upImg from '../assets/up.png'
+import redBin from '../assets/redbin.png'
 
 export const CommentCard = ({ comment }) => {
   const { currUser } = useContext(UserContext);
@@ -31,9 +33,9 @@ export const CommentCard = ({ comment }) => {
     <div className="comment_card">
       <div className="comment_stats">
         <p>u/{comment.author}</p>
-        <p><img className="icon" src="/src/assets/up.png" alt="Votes" /> {comment.votes}</p>
+        <p><img className="icon" src={upImg} alt="Votes" /> {comment.votes}</p>
         {canDelete ? (
-          <button onClick={handleDeleteComment}><img className="icon" src="/src/assets/redbin.png" alt="Delete" /></button>
+          <button onClick={handleDeleteComment}><img className="icon" src={redBin} alt="Delete" /></button>
         ) : null}
       </div>
       {isError ? (

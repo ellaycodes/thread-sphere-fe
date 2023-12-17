@@ -4,6 +4,10 @@ import { getCommentsByArticleId, postCommentToArticle } from "../../utils/api";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { Loading } from "./Loading";
+import commentDots from '../assets/comment-dots.png'
+import minus from '../assets/minus.png'
+import plus from '../assets/plus.png'
+import send from '../assets/paper-plane-top.png'
 
 export const CommentSection = ({ article }) => {
   const { currUser } = useContext(UserContext);
@@ -88,11 +92,11 @@ export const CommentSection = ({ article }) => {
   return (
     <>
       <div className="comment_header">
-        <p><img className="icon" src="/src/assets/comment-dots.png" alt="comments" /> {article.comment_count}</p>
+        <p><img className="icon" src={commentDots} alt="comments" /> {article.comment_count}</p>
         {discardButton ? (
-          <button onClick={handleDiscardComment}><img className="icon" src="/src/assets/minus.png" alt="Discard Comment" /></button>
+          <button onClick={handleDiscardComment}><img className="icon" src={minus} alt="Discard Comment" /></button>
         ) : (
-          <button onClick={handleAddCommentButton}><img className="icon" src="/src/assets/plus.png" alt="Add Comment" /></button>
+          <button onClick={handleAddCommentButton}><img className="icon" src={plus} alt="Add Comment" /></button>
         )}
       </div>
       {addCommentButton ? (
@@ -108,11 +112,11 @@ export const CommentSection = ({ article }) => {
           )}
           {bodyError ? (
             <button className="post_comment" disabled={true}>
-              <img className="icon" src="/src/assets/paper-plane-top.png" alt="Post" />
+              <img className="icon" src={send} alt="Post" />
             </button>
           ) : (
             <button className="post_comment" disabled={false}>
-              <img className="icon" src="/src/assets/paper-plane-top.png" alt="Post" />
+              <img className="icon" src={send} alt="Post" />
             </button>
           )}
         </form>
