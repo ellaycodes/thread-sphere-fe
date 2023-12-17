@@ -57,26 +57,26 @@ export const UpVotes = ({ article }) => {
 
   return (
     <div className="vote">
-      <p>{incVote}</p>
       <div className="voting_buttons">
+      <p>{incVote}</p>
         {error ? <div>
           <button className="button_error" onClick={handleUpvote} disabled={upClicked}>
-            <img src="/Users/estheryekini/Northcoders/frontend/thread-sphere-fe/src/assets/up.png" alt="UpVote" />
+            <img className="icon" src="/src/assets/up.png" alt="UpVote" />
           </button>
           <button className="button_error" onClick={handleDownvote} disabled={downClicked}>
-          <img src="https://github.com/ellaycodes/thread-sphere-fe/blob/d44a17fab67e276f9ec7c9805118716d64fa5329/src/assets/down.png" alt="DownVote" />
+          <img className="icon" src="/src/assets/down.png" alt="DownVote" />
           </button>
         </div> : <div>
           <button onClick={handleUpvote} disabled={upClicked}>
-          <img src="/Users/estheryekini/Northcoders/frontend/thread-sphere-fe/src/assets/up.png" alt="UpVote" />
+          <img className="icon" src="/src/assets/up.png" alt="UpVote" />
           </button>
           <button onClick={handleDownvote} disabled={downClicked}>
-          <img src="src/assets/down.png" alt="DownVote" />
+          <img className="icon" src="/src/assets/down.png" alt="DownVote" />
           </button>
         </div>}
         {upClicked || downClicked ? (
-          <button onClick={handleClear}><img src="src/assets/clear-alt.png" alt="Clear" /></button>
-        ) : <button disabled={true}><img src="src/assets/clear-alt.png" alt="Clear" /></button>}
+          <button onClick={handleClear}><img className="icon" src="/src/assets/clear-alt.png" alt="Clear" /></button>
+        ) : <button disabled={true}><img className="icon" src="/src/assets/clear-alt.png" alt="Clear" /></button>}
       </div>
     </div>
   );

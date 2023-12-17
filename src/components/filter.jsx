@@ -29,9 +29,9 @@ export const Filter = ({ setSortBy, order, setOrder }) => {
       </select>
       <button onClick={toggleOrder}>
         {order === "asc" ? (
-          <img className="button_icon" src="src/assets/sort-circle-up.png" alt="" />
+          <img className="button_icon" src="/src/assets/sort-circle-up.png" alt="" />
         ) : (
-          <img className="button_icon" src="src/assets/sort-circle-down.png" alt="" />
+          <img className="button_icon" src="/src/assets/sort-circle-down.png" alt="" />
         )}
       </button>
     </div>

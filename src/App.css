@@ -1,25 +1,27 @@
 #root {
   text-align: center;
-  margin: 0;
+  margin: 0 0 0 1vw;
   display: grid;
+  grid-template-columns: auto;
   font-family: sans-serif;
-  width: 95vw;
+  /* justify-items: center; */
+  width: 96vw;
 }
 
 header {
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   background-color: white;
-  padding: 1vh 0 ;
+  padding: 1vh 0;
   top: 0;
-  height: 10vh;
+  height: 5vh;
 }
 
 .TS_logo {
-  width: 40vw;
+  width: 30vw;
 }
 
 .home_icon {
@@ -27,9 +29,9 @@ header {
 }
 
 .body_header {
-  margin: 13vh 0 0 2vw;
+  margin: 9vh 0 0 2vw;
   grid-row-start: 1;
-  grid-column-start: 1;
+  grid-column: 1 / -1;
   text-align: left;
   align-self: center;
 }
@@ -54,21 +56,26 @@ p {
 
 nav {
   display: flex;
-  justify-content: start;
-  gap: 7vw;
-  width: 40%;
+  justify-content: center;
+  align-items: center;
+  gap: 8vw;
+  margin-right: 10vw;
+  width: 40vw;
+  border: 1px solid lightgrey;
+  border-radius: 20px;
+  height: 3vh;
 }
 
 .filter_section {
   display: flex;
-  width: 90%;
+  width: 95%;
   justify-content: flex-end;
   align-self: center;
   height: 3vh;
   min-height: 20px;
   max-height: 30px;
   grid-area: 1/1/2/2;
-  margin-top: 13vh;
+  margin-top: 9vh;
 }
 
 .filter_section > button {
@@ -76,6 +83,11 @@ nav {
   border: 0px solid #006cb3;
   border-radius: 5px;
   background-color: transparent;
+}
+
+.button_icon {
+  width: 6vw;
+  height: 3vh;
 }
 
 .hero_img {
@@ -91,6 +103,7 @@ nav {
   grid-area: 3 / 1 / 4 / 3;
   padding-bottom: 5vh;
   border-bottom: 5px solid lightgrey;
+  width: 95%;
 }
 
 .author {
@@ -100,9 +113,9 @@ nav {
 }
 
 .article_card {
-  width: 80vw;
+  width: 90vw;
   max-height: 130px;
-  padding: 2vw 0vw 2vw 0;
+  padding: 2vw 0vw 2vw 2vw;
   margin: 1vw 0vw 1vw 0;
   box-sizing: content-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.103);
@@ -117,9 +130,6 @@ nav {
   width: 3vw;
 }
 
-.button_icon {
-  width: 4vw;
-}
 
 .article_img {
   width: 20vw;
@@ -128,7 +138,6 @@ nav {
   grid-area: 2 / 1 / 3 / 2;
   max-height: 90px;
 }
-
 
 .article_title {
   grid-area: 2 / 2/ 3/ 3;
@@ -139,6 +148,10 @@ nav {
 .article_content {
   text-align: left;
   width: 90%;
+}
+
+.author {
+  font-size: 3vw
 }
 
 .article_stats {
@@ -176,26 +189,38 @@ nav {
 
 .comment_card {
   border-bottom: 5px solid lightgrey;
-  margin: 2vh 2vw;
+  margin: 0;
   width: 97%;
   grid-column: 1 / 3;
 }
 
 .comment_header {
-  margin: 2vh 0vw;
+  margin: 0vw;
+  height: 5vh;
   border-bottom: 5px solid lightgrey;
-  padding: 1vw 0 3vh 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 95%;
   grid-area: 4 / 1 / 5 / 3;
 }
 
 .comment_header > button {
-  border-radius: 10px;
   border: 0;
   background-color: transparent;
+  margin-right: 5vw;
+  border: 1px solid lightgrey;
+  height: 3vh;
+  width: 10vw;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment_header > p {
+  margin-left: 5vw;
 }
 
 .comment_stats {
@@ -208,22 +233,26 @@ nav {
 }
 
 .comment_stats > p {
-  font-size: 10pt;
+  font-size: 3vw;
   color: grey;
 }
 
 .comment_stats > button {
   border-radius: 20px;
-  border: 1px solid #ff969b;
-  width: 15vw;
+  border: 1px solid lightgrey;
+  width: 9vw;
   background-color: transparent;
   color: red;
+  height: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .comment_body {
   text-align: left;
-  min-height: 10vh;
-  margin: 2vh;
+  min-height: 5vh;
+  margin: 0 2vh 2vh 2vh;
 }
 
 button {
@@ -235,30 +264,46 @@ button {
   align-items: center;
   justify-content: flex-end;
   gap: 4vw;
-  width: 60vw;
+  width: 50vw;
 }
 
 .voting_buttons {
   display: flex;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  width: 27vw;
+  height: 3vh;
+  justify-content: center;
+}
+
+.voting_buttons > p {
+  padding: 0 1vw;
+  border-right: 1px solid lightgrey;
 }
 
 .add_comment {
-  margin: 0 2vw;
-  height: 10vh;
-  border: 1px solid grey;
+  margin: 2vh 2vw;
+  border: 2px solid grey;
   background-color: lightgrey;
   display: flex;
   justify-content: stretch;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 90%;
+  grid-area: 5 / 1 / 6 / 3;
+  height: 4vh;
 }
 
 input {
   width: 90%;
-  height: 10vh;
+  height: 4vh;
   padding: 0 2vw;
   background-color: transparent;
   border: 0px;
+}
+
+input::placeholder {
+  font-size: 3vw
 }
 
 .error::placeholder {
@@ -272,12 +317,12 @@ input {
 
 .error {
   border: 1px solid red;
-  border-radius: 10px 0 0 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 .post_comment {
   width: 10vw;
-  height: 10vh;
+  height: 4vh;
   background-color: lightgray;
   border: 0px;
   border-left: 1px solid grey;
@@ -366,6 +411,7 @@ a {
   text-decoration: none;
   color: black;
   padding: 1vw;
+  font-size: 4vw;
 }
 
 a:hover {
@@ -383,7 +429,7 @@ a:hover {
 
 .loader {
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #3498db; 
+  border-top: 5px solid #3498db;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -391,8 +437,12 @@ a:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-text {
@@ -416,7 +466,7 @@ a:hover {
   color: #d8000c;
   font-size: 1em;
 }
- 
+
 @media screen and (min-width: 601px) {
   h1 {
     font-size: 40px;

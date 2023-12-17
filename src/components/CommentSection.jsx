@@ -88,11 +88,11 @@ export const CommentSection = ({ article }) => {
   return (
     <>
       <div className="comment_header">
-        <p><img src="src/assets/comment-dots.png" alt="comments" /> {article.comment_count}</p>
+        <p><img className="icon" src="/src/assets/comment-dots.png" alt="comments" /> {article.comment_count}</p>
         {discardButton ? (
-          <button onClick={handleDiscardComment}><img src="src/assets/minus.png" alt="Discard Comment" /></button>
+          <button onClick={handleDiscardComment}><img className="icon" src="/src/assets/minus.png" alt="Discard Comment" /></button>
         ) : (
-          <button onClick={handleAddCommentButton}><img src="src/assets/plus.png" alt="Add Comment" /></button>
+          <button onClick={handleAddCommentButton}><img className="icon" src="/src/assets/plus.png" alt="Add Comment" /></button>
         )}
       </div>
       {addCommentButton ? (
@@ -108,11 +108,11 @@ export const CommentSection = ({ article }) => {
           )}
           {bodyError ? (
             <button className="post_comment" disabled={true}>
-              Post
+              <img className="icon" src="/src/assets/paper-plane-top.png" alt="Post" />
             </button>
           ) : (
             <button className="post_comment" disabled={false}>
-              Post
+              <img className="icon" src="/src/assets/paper-plane-top.png" alt="Post" />
             </button>
           )}
         </form>

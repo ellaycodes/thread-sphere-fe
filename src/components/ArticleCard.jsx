@@ -27,8 +27,8 @@ export const ArticleCard = ({ article }) => {
           <p>{date}</p>
           <p>{article.author}</p>
           <p onClick={handleNavigateToTopic}>t/{article.topic}</p>
-          <p><img className="icon" src="src/assets/up.png" alt="" /> {article.votes}</p>
-          <p><img className="icon" src="src/assets/comment-dots.png" alt="" /> {article.comment_count}</p>
+          <p><img className="icon" src="/src/assets/up.png" alt="" /> {article.votes}</p>
+          <p><img className="icon" src="/src/assets/comment-dots.png" alt="" /> {article.comment_count}</p>
         </div>
         <h3 className="article_title">{article.title}</h3>
     </div>
