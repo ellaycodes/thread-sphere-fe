@@ -282,6 +282,10 @@ button {
   border-right: 1px solid lightgrey;
 }
 
+.voting_buttons > div > button {
+  padding: 0 0 0 2vw;
+}
+
 .add_comment {
   margin: 2vh 2vw;
   border: 2px solid grey;
